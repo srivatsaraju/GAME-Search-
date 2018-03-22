@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>HackerEarth</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top" background=img1.png>
+    <div class="content-wrapper">
+        <div class="container-fluid" style="width:90%">
+
+            <nav id="myNavbar" class="navbar justify-content-between navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <a class="navbar-brand"></a>
+                    <div class=h1>Intern Assignment</div>
+
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+            </nav>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Data Table</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="table" class="table thread-dark  table-bordered" width="100%" cellspacing="0" data-pagination="true" data-search="true">
+                            <thead>
+                                <tr>
+                                    <th data-sortable="true" data-field="title">Title</th>
+                                    <th data-sortable="true" data-field="url">Url</th>
+                                    <th data-sortable="true" data-field="platform">platform</th>
+                                    <th data-sortable="true" data-field="score">Score</th>
+                                    <th data-sortable="true" data-field="genre">Genre</th>
+                                    <th data-sortable="true" data-field="editors_choice">Editors Choice</th>
+                                    <th data-sortable="true" data-field="release_year">Release Year</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated Today at 09:30 PM</div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © HackerEarth 2018</small>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+        <script>
+            $(document).ready(function() { //import data from JSON
+                $.ajax({
+                    url: 'http://starlord.hackerearth.com/gamesext',
+                    data: {
+                        format: 'json'
+                    },
+                    dataType: 'json',
+                    success: function(values) {
+                        //console.log(values);
+                        //$('.row').css('display','block');
+                        $('#table').bootstrapTable({ //insert values into data tables
+                            data: values
+                        });
+
+                    },
+                    type: 'GET'
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
